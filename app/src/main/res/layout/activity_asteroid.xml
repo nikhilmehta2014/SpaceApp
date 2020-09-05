@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.nikhil.spaceapp.ui.asteroid.activity.AsteroidViewModel" />
+            type="com.nikhil.spaceapp.feature.asteroid.activity.AsteroidViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

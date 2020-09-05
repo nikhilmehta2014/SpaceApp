@@ -1,4 +1,4 @@
-package com.nikhil.spaceapp.ui.asteroid.dto
+package com.nikhil.spaceapp.feature.asteroid.dto
 
 data class AsteroidDTO(
     val links: Links,

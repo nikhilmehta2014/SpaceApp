@@ -1,4 +1,4 @@
-package com.nikhil.spaceapp.ui.asteroid.activity
+package com.nikhil.spaceapp.feature.asteroid.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
