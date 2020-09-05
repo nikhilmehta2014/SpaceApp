@@ -5,6 +5,6 @@ import com.nikhil.spaceapp.feature.asteroid.dto.AsteroidDTO
 
 interface AsteroidRepository {
 
-    suspend fun getAllAsteroidsData(): Result<List<AsteroidDTO.NearEarthObjects.X20190304>>
+    suspend fun getAllAsteroidsData(): Result<AsteroidDTO>
 
 }

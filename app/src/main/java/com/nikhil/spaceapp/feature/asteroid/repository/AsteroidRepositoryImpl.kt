@@ -4,6 +4,8 @@ import com.nikhil.spaceapp.data.model.Result
 import com.nikhil.spaceapp.data.network.AsteroidService
 import com.nikhil.spaceapp.feature.asteroid.dto.AsteroidDTO
 import com.nikhil.spaceapp.util.constants.NASA_API_KEY
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -18,17 +20,17 @@ class AsteroidRepositoryImpl @Inject constructor(
         val endDateFormat = date_yyyyMMdd.format(Date())
     }
 
-
-    override suspend fun getAllAsteroidsData(): Result<List<AsteroidDTO.NearEarthObjects.X20190304>> {
-        return try {
-            val response = asteroidService.getAllAsteroidsData(
-                startDateFormat,
-                endDateFormat,
-                NASA_API_KEY.toInt()
-            )
-            Result.Success(response)
-        } catch (throwable: Throwable) {
-            Result.Error(throwable)
+    override suspend fun getAllAsteroidsData(): Result<AsteroidDTO> =
+        withContext(Dispatchers.IO) {
+            return@withContext try {
+                val response = asteroidService.getAllAsteroidsData(
+                    startDateFormat,
+                    endDateFormat,
+                    NASA_API_KEY
+                )
+                Result.Success(response)
+            } catch (throwable: Throwable) {
+                Result.Error(throwable)
+            }
         }
-    }
 }

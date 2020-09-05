@@ -3,6 +3,7 @@ package com.nikhil.spaceapp.feature.asteroid.viewmodel
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nikhil.spaceapp.data.model.Result
 import com.nikhil.spaceapp.feature.asteroid.repository.AsteroidRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -18,7 +19,12 @@ class AsteroidViewModel @ViewModelInject constructor(
 
     fun getAllAsteroidsData() {
         viewModelScope.launch(coroutineExceptionHandler) {
-            repo.getAllAsteroidsData()
+            when(val result = repo.getAllAsteroidsData()){
+                is Result.Success ->
+                    Timber.d("Success")
+                is Result.Error ->
+                    Timber.d("AsteroidViewModel = Error")
+            }
         }
     }
 }

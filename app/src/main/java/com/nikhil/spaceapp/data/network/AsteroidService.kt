@@ -10,6 +10,6 @@ interface AsteroidService {
     suspend fun getAllAsteroidsData(
         @Query("start_date") startDate: String,
         @Query("end_date") endDate: String,
-        @Query("api_key") apiKey: Int
-    ) : List<AsteroidDTO.NearEarthObjects.X20190304>
+        @Query("api_key") apiKey: String
+    ) : AsteroidDTO
 }

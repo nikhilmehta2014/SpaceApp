@@ -12,7 +12,8 @@ data class AsteroidDTO(
     )
 
     data class NearEarthObjects(
-        val `2019-03-04`: List<X20190304>
+        //TODO: Correct the format
+        val `2020-09-05`: List<X20190304>
     ) {
         data class X20190304(
             val links: Links,

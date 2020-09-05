@@ -13,6 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -21,7 +22,10 @@ object NetworkModule {
 
     private val logging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     private val client = OkHttpClient.Builder()
+        .connectTimeout(30, TimeUnit.SECONDS)
+        .readTimeout(30, TimeUnit.SECONDS)
         .addInterceptor(logging)
+//        .addInterceptor(HttpRequestInterceptor())
         .build()
 
     @Singleton
@@ -42,6 +46,6 @@ object NetworkModule {
         .build()
 
     @Provides
-    fun provideNewsApiService(retrofit: Retrofit): AsteroidService =
+    fun provideAsteroidService(retrofit: Retrofit): AsteroidService =
         retrofit.create(AsteroidService::class.java)
 }
