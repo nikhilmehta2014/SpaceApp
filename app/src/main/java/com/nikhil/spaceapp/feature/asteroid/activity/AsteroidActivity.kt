@@ -2,7 +2,7 @@ package com.nikhil.spaceapp.feature.asteroid.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
+import androidx.activity.viewModels
 import com.nikhil.spaceapp.R
 import com.nikhil.spaceapp.databinding.ActivityAsteroidBinding
 import com.nikhil.spaceapp.feature.asteroid.viewmodel.AsteroidViewModel
@@ -13,9 +13,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class AsteroidActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAsteroidBinding
-    private val viewModel by lazy {
-        ViewModelProviders.of(this).get(AsteroidViewModel::class.java)
-    }
+
+    /**
+     * https://stackoverflow.com/a/60670866/4822110
+     * Guide for replacing 'ViewModelProviders' with 'by viewModels()'
+     */
+    private val viewModel:AsteroidViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +26,5 @@ class AsteroidActivity : AppCompatActivity() {
         binding.viewModel=viewModel
 
         viewModel.getAllAsteroidsData()
-
     }
 }
