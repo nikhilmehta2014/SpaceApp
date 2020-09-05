@@ -1,4 +1,4 @@
-package com.nikhil.spaceapp.feature.asteroid.activity
+package com.nikhil.spaceapp.feature.asteroid.viewmodel
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.nikhil.spaceapp.R
 import com.nikhil.spaceapp.databinding.ActivityAsteroidBinding
+import com.nikhil.spaceapp.feature.asteroid.viewmodel.AsteroidViewModel
 import com.nikhil.spaceapp.util.extensions.bindContentView
 import dagger.hilt.android.AndroidEntryPoint
 
