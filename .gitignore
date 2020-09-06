@@ -16,3 +16,4 @@
 
 #Custom ignored files
 app/src/main/java/com/nikhil/spaceapp/util/constants/KeyConstant.kt
+app/src/main/java/com/nikhil/spaceapp/Notes.kt

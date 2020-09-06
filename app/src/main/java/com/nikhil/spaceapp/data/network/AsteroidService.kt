@@ -1,6 +1,5 @@
 package com.nikhil.spaceapp.data.network
 
-import com.nikhil.spaceapp.feature.asteroid.dto.AsteroidDTO
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,5 +10,5 @@ interface AsteroidService {
         @Query("start_date") startDate: String,
         @Query("end_date") endDate: String,
         @Query("api_key") apiKey: String
-    ) : AsteroidDTO
+    ) : String
 }
