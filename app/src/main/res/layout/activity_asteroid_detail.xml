@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.nikhil.spaceapp.feature.asteroid.viewmodel.AsteroidViewModel" />
+
+        <import type="com.nikhil.spaceapp.util.ImageUtils" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!--Asteroid Image-->
+                <ImageView
+                    android:id="@+id/iv_asteroid"
+                    android:layout_width="200dp"
+                    android:layout_height="400dp"
+                    android:scaleType="center"
+                    app:imageUrl="@{ImageUtils.INSTANCE.randomImage}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/backgrounds/scenic" />
+
+                <!--Name Label-->
+                <TextView
+                    android:id="@+id/tv_asteroid_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Asteroid Name : "
+                    app:layout_constraintStart_toEndOf="@id/iv_asteroid"
+                    app:layout_constraintTop_toTopOf="@id/iv_asteroid" />
+
+                <!--Name Value-->
+                <TextView
+                    android:id="@+id/tv_asteroid_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:text="@{viewModel.asteroid.name}"
+                    android:textColor="@color/primaryTextColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_asteroid_label"
+                    app:layout_constraintTop_toTopOf="@id/tv_asteroid_label"
+                    tools:text="W341" />
+
+                <!--Magnitude Label-->
+                <TextView
+                    android:id="@+id/tv_magnitude_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Magnitude : "
+                    app:layout_constraintStart_toStartOf="@id/tv_asteroid_label"
+                    app:layout_constraintTop_toBottomOf="@id/tv_asteroid_name" />
+
+                <!--Magnitude Value-->
+                <!--DataBinding format - Double to String-->
+                <TextView
+                    android:id="@+id/tv_magnitude_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:text='@{""+viewModel.asteroid.absolute_magnitude_h}'
+                    android:textColor="@color/primaryTextColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_magnitude_label"
+                    app:layout_constraintTop_toTopOf="@id/tv_magnitude_label"
+                    tools:text="22.7" />
+
+                <!--Kilometer Label-->
+                <TextView
+                    android:id="@+id/tv_kilometer_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="KM : "
+                    app:layout_constraintStart_toEndOf="@id/iv_asteroid"
+                    app:layout_constraintTop_toBottomOf="@id/tv_magnitude_label" />
+
+                <!--Kilometer Value-->
+                <TextView
+                    android:id="@+id/tv_kilometer_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:text='@{""+viewModel.asteroid.estimated_diameter.kilometers.estimated_diameter_min}'
+                    android:textColor="@color/primaryTextColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_kilometer_label"
+                    app:layout_constraintTop_toTopOf="@id/tv_kilometer_label"
+                    tools:text="0.07" />
+
+                <!--Hazardous Label-->
+                <TextView
+                    android:id="@+id/tv_hazardous_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Hazardous : "
+                    app:layout_constraintStart_toEndOf="@id/iv_asteroid"
+                    app:layout_constraintTop_toBottomOf="@id/tv_kilometer_label" />
+
+                <!--Hazardous Value-->
+                <!--DataBinding format - Boolean to String-->
+                <TextView
+                    android:id="@+id/tv_hazardous_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:text="@{viewModel.asteroid._potentially_hazardous_asteroid == true ? `Yes` : `No` }"
+                    android:textColor="@color/primaryTextColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_hazardous_label"
+                    app:layout_constraintTop_toTopOf="@id/tv_hazardous_label"
+                    tools:text="No" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nikhil.spaceapp.R
 import com.nikhil.spaceapp.databinding.ActivityAsteroidBinding
 import com.nikhil.spaceapp.feature.asteroid.adapter.AsteroidAdapter
+import com.nikhil.spaceapp.feature.asteroid.dto.Asteroid
 import com.nikhil.spaceapp.feature.asteroid.viewmodel.AsteroidViewModel
+import com.nikhil.spaceapp.feature.detail.activity.AsteroidDetailActivity
 import com.nikhil.spaceapp.util.extensions.bindContentView
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -35,10 +37,16 @@ class AsteroidActivity : AppCompatActivity() {
         viewModel.asteroidList.observe(this, Observer {
             Timber.d("Size of Asteroid data = ${it.size}")
             binding.rvAsteroid.apply {
-                asteroidAdapter = AsteroidAdapter(it)
+                asteroidAdapter = AsteroidAdapter(it) { asteroid ->
+                    goToAsteroidDetailActivity(asteroid)
+                }
                 layoutManager = LinearLayoutManager(this@AsteroidActivity)
                 adapter = asteroidAdapter
             }
         })
+    }
+
+    private fun goToAsteroidDetailActivity(asteroid: Asteroid) {
+        startActivity(AsteroidDetailActivity.getStartIntent(this, asteroid))
     }
 }

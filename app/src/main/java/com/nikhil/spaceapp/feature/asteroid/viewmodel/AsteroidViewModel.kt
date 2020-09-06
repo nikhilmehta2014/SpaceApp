@@ -22,6 +22,8 @@ class AsteroidViewModel @ViewModelInject constructor(
 
     val showLoader = ObservableField<Boolean>()
 
+    var asteroid: Asteroid? = null
+
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         Timber.e(throwable.localizedMessage)
     }
@@ -41,5 +43,9 @@ class AsteroidViewModel @ViewModelInject constructor(
                 }
             }
         }
+    }
+
+    fun init(asteroid: Asteroid) {
+        this.asteroid = asteroid
     }
 }
