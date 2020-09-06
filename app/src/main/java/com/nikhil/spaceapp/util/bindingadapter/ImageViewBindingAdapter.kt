@@ -1,5 +1,6 @@
 package com.nikhil.spaceapp.util.bindingadapter
 
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -27,4 +28,9 @@ fun loadImage(imageView: ImageView, url: String?) {
             .apply(requestOption)
             .into(imageView)
     }
+}
+
+@BindingAdapter("visibility")
+fun setVisibilty(view: View, boolean: Boolean) {
+    view.visibility = if (boolean) View.VISIBLE else View.GONE
 }
