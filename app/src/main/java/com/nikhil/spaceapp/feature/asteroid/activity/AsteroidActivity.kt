@@ -3,11 +3,13 @@ package com.nikhil.spaceapp.feature.asteroid.activity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.nikhil.spaceapp.R
 import com.nikhil.spaceapp.databinding.ActivityAsteroidBinding
 import com.nikhil.spaceapp.feature.asteroid.viewmodel.AsteroidViewModel
 import com.nikhil.spaceapp.util.extensions.bindContentView
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class AsteroidActivity : AppCompatActivity() {
@@ -26,5 +28,9 @@ class AsteroidActivity : AppCompatActivity() {
         binding.viewModel = viewModel
 
         viewModel.getAllAsteroidsData()
+
+        viewModel.asteroidList.observe(this, Observer {
+            Timber.d("Size of Asteroid data = ${it.size}")
+        })
     }
 }
