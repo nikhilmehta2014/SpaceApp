@@ -8,6 +8,8 @@
         <variable
             name="asteroid"
             type="com.nikhil.spaceapp.feature.asteroid.dto.Asteroid" />
+
+        <import type="com.nikhil.spaceapp.util.ImageUtils" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +31,7 @@
                     android:id="@+id/iv_asteroid"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
-                    app:imageUrl="@{asteroid.nasa_jpl_url}"
+                    app:imageUrl="@{ImageUtils.INSTANCE.randomImage}"
                     app:layout_constraintStart_toStartOf="parent"
                     android:scaleType="center"
                     app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +41,7 @@
                     android:id="@+id/tv_asteroid_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Asteroid Name = @{asteroid.name}"
+                    android:text="@{asteroid.name}"
                     android:layout_marginTop="10dp"
                     app:layout_constraintStart_toStartOf="@id/iv_asteroid"
                     app:layout_constraintTop_toBottomOf="@id/iv_asteroid"
